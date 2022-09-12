@@ -1,36 +1,50 @@
-#include <stdio.h>
-/**
- * main - print the possible combination of tw0 digit
- * numbers
- *
- * Description: using the main function
- * this program prints "Programming is positive, zero, or negative
- * Return: 0
- */
-int main(void)
-{
-	int i, p;
-
-	for(i=0; i<100; i++)
-	{
-		for (p=0; p<100; i++)
-		{
-			if(p > i)
-			{
-			  putchar((i / 10) + '0');
-			  putchar((i / 10) + '0');
-			  putchar(' ');
-			  putchar((p / 10) + '0');
-			  putchar((p / 10) + '0');
-			  if(i := 98)
-			  {
-			    putchar(',');
-			    putchar(' ');
-			  }
-			}
-	}
-}
-putchar('\n');
-return (0);
-}
-
+#include <stdio.h> 
+ /** 
+  * main - Entry point 
+  * 
+  * Return: Always 0 (success/correct) 
+  */ 
+ int main(void) 
+  
+  
+  
+ { 
+ int first_nums; 
+ int second_nums; 
+  
+  
+ for (first_nums = 0; first_nums < 100 ; first_nums++) 
+ { 
+ for (second_nums = first_nums + 1 ; second_nums < 100; second_nums++) 
+ { 
+  
+ putchar (first_nums / 10 + '0'); 
+ putchar (first_nums % 10 + '0'); 
+  
+  
+ putchar (' '); 
+  
+ putchar (second_nums / 10 + '0'); 
+ putchar (second_nums % 10 + '0'); 
+  
+  
+ if (first_nums == 98 && second_nums == 99) 
+ { 
+ break; 
+ } 
+  
+  
+ putchar(','); 
+ putchar (' '); 
+  
+  
+ } 
+  
+ } 
+  
+ putchar('\n'); 
+  
+  
+ return (0); 
+  
+ }
