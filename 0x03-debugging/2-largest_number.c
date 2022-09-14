@@ -8,20 +8,20 @@
  * Return: My largest number
  */
 
-int largest_number(int x, int y, int z)
+int largest_number(int a, int b, int c)
 {
 int largest;
-if (x >= y && x >= z)
+if (a >= b && a >= c)
 {
-largest = x;
+largest = a;
 }
-else if (y >= x && y >= z)
+else if (b >= a && b >= c)
 {
-largest = y;
+largest = b;
 }
 else
 {
-largest = z;
+largest = c;
 }
 return (largest);
 }
