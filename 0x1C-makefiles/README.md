@@ -1,35 +1,33 @@
-# 0x1C. C - Makefiles
+# Makefiles
 
-## Learning Objectives
+# Learning Objectives
+
 * What are `make`, Makefiles
 * When, why and how to use Makefiles
-* What are a rules and how to set and use them
+* What are rules and how to set and use them
 * What are explicit and implicit rules
 * What are the most common / useful rules
 * What are variables and how to set and use them
 
-## Requirements
-* Allowed editors: `vi`, `vim`, `emacs`
-* OS: Ubuntu 14.04 LTS
-* Version of `gcc`: 4.8.4
-* Version of `make`: GNU Make 3.81
-* All your files should end with a new line
-* A `README.md` file, at the root of the folder of the project, is mandatory
----
+# Tasks
 
-### [0. make -f 0-Makefile](./0-Makefile)
+## make -f 0-Makefile
+
 Create your first Makefile.
 
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`
-	* The `all` rule builds your executable
+    * The `all` rule builds your executable
 * variables: none
-julien@ubuntu:~/0x1C. Makefiles$ make -f 0-Makefile 
-gcc main.c holberton.c -o holberton
+
+**Solution:** [0-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/0-Makefile)
+
 ```
-julien@ubuntu:~/0x1C. Makefiles$ ./holberton 
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 0-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# ./school
 j#0000000000000000000000000000000000000
 j#000000000000000000@Q**g00000000000000
 j#0000000000000000*]++]4000000000000000
@@ -55,226 +53,211 @@ j#0000000000000@@+wgdA]+J00000000000000
 j#0000000000000k?qwgdC=]4#0000000000000
 j#00000000000000w]+]++qw#00000000000000
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-julien@ubuntu:~/0x1C. Makefiles$ 
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles#
 ```
 
-### [1. make -f 1-Makefile](./1-Makefile)
+## make -f 1-Makefile
+
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`
-	* The `all` rule builds your executable
+    * The `all` rule builds your executable
 * variables: `CC`, `SRC`
-	* `CC`: the compiler to be used
-	* `SRC`: the `.c` files
+    * `C`: the compiler to be used
+    * `SRC`: the `.c` files
+
+**Solution:** [1-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/1-Makefile)
+
 ```
-julien@ubuntu:~/0x1C. Makefiles$ make -f 1-Makefile
-gcc main.c holberton.c -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ make -f 1-Makefile
-gcc main.c holberton.c -o holberton
-julien@ubuntu:~/0x1C. Makefiles$
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 1-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 1-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles#
 ```
 
-### [2. make -f 2-Makefile](./2-Makefile)
+## make -f 2-Makefile
+
 Create your first useful Makefile.
 
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`
-	* The `all` rule builds your executable
+    * The `all` rule builds your executable
 * variables: `CC`, `SRC`, `OBJ`, `NAME`
-	* `CC`: the compiler to be used
-	* `SRC`: the `.c` files
-	* `OBJ`: the `.o` files
-	* `NAME`: the name of the executable
+    * `CC`: the compiler to be used
+    * `SRC`: the `.c` files
+    * `OBJ`: the `.o` files
+    * `NAME`: the name of the executable
 * The `all` rule should recompile only the updated source files
-* You are not allowed to have a list of all the `.o` files
+* You are not allowed to have a list of all the ``.o`` files
+
+**Solution:** [2-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/2-Makefile)
+
 ```
-julien@ubuntu:~/0x1C. Makefiles$ make -f 2-Makefile
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 2-Makefile
+gcc main.o school.o -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 2-Makefile
+gcc main.o school.o -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# echo "/* School */" >> main.c
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 2-Makefile
 gcc    -c -o main.o main.c
-gcc    -c -o holberton.o holberton.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ make -f 2-Makefile
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ echo "/* Holberton */" >> main.c
-julien@ubuntu:~/0x1C. Makefiles$ make -f 2-Makefile
-gcc    -c -o main.o main.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ 
+gcc main.o school.o -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles#
 ```
 
-### [3. make -f 3-Makefile](./3-Makefile)
+## make -f 3-Makefile
+
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`, `clean`, `oclean`, `fclean`, `re`
-	* `all`: builds your executable
-	* `clean`: deletes all Emacs and Vim temporary files along with the executable
-	* `oclean`: deletes the object files
-	* `fclean`: deletes the Emacs temporary files, the executable, and the object files
-	* `re`: forces recompilation of all source files
+    * `all`: builds your executable
+    * `clean`: deletes all Emacs and Vim temporary files along with the executable
+    * `oclean`: deletes the object files
+    * `fclean`: deletes the Emacs temporary files, the executable, and the object files
+    * `re`: forces recompilation of all source files
 * variables: `CC`, `SRC`, `OBJ`, `NAME`, `RM`
-	* `CC`: the compiler to be used
-	* `SRC`: the `.c` files
-	* `OBJ`: the `.o` files
-	* `NAME`: the name of the executable
-	* `RM`: the program to delete files
+    * `CC`: the compiler to be used
+    * `SRC`: the `.c` files
+    * `OBJ`: the `.o` files
+    * `NAME`: the name of the executable
+    * `RM`: the program to delete files
 * The `all` rule should recompile only the updated source files
 * The `clean`, `oclean`, `fclean`, `re` rules should never fail
 * You are not allowed to have a list of all the `.o` files
+
+**Solution:** [3-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/3-Makefile)
+
 ```
-julien@ubuntu:~/holberton/curriculum_by_julien/holbertonschool-low_level_programming/0x1C. Makefiles$ ls -1
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make -f 3-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make all -f 3-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# ls -1
 0-Makefile
+100-Makefile
 1-Makefile
 2-Makefile
 3-Makefile
-holberton.c
+4-Makefile
+5-island_perimeter.py
+5-main.py
 main.c
-main.c~
-m.h
-julien@ubuntu:~/0x1C. Makefiles$ make -f 3-Makefile
-gcc    -c -o main.o main.c
-gcc    -c -o holberton.o holberton.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ make all -f 3-Makefile
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ ls -1
-0-Makefile
-1-Makefile
-2-Makefile
-3-Makefile
-holberton
-holberton.c
-holberton.o
-main.c
-main.c~
 main.o
 m.h
-julien@ubuntu:~/0x1C. Makefiles$ make clean -f 3-Makefile 
-rm -f *~ holberton
-julien@ubuntu:~/0x1C. Makefiles$ make oclean -f 3-Makefile 
-rm -f main.o holberton.o
-julien@ubuntu:~/0x1C. Makefiles$ make fclean -f 3-Makefile 
-rm -f *~ holberton
-rm -f main.o holberton.o
-julien@ubuntu:~/0x1C. Makefiles$ make all -f 3-Makefile
+__pycache__
+README.md
+school
+school.c
+school.o
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make clean -f 3-Makefile
+rm -f *~ school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make oclean -f 3-Makefile
+rm -f main.o school.o
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make fclean -f 3-Makefile
+rm -f *~ school
+rm -f main.o school.o
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make all -f 3-Makefile
 gcc    -c -o main.o main.c
-gcc    -c -o holberton.o holberton.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ make all -f 3-Makefile
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ make re -f 3-Makefile
-rm -f main.o holberton.o
+gcc    -c -o school.o school.c
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make all -f 3-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make re -f 3-Makefile
+rm -f main.o school.o
 gcc    -c -o main.o main.c
-gcc    -c -o holberton.o holberton.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ 
+gcc    -c -o school.o school.c
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles#
 ```
 
-### [4. A complete Makefile](./4-Makefile)
+## A complete Makefile
+
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`, `clean`, `fclean`, `oclean`, `re`
-	* `all`: builds your executable
-	* `clean`: deletes all Emacs and Vim temporary files along with the executable
-	* `oclean`: deletes the object files
-	* `fclean`: deletes the Emacs temporary files, the executable, and the object files
-	* `re`: forces recompilation of all source files
+    * `all`: builds your executable
+    * `clean`: deletes all Emacs and Vim temporary files along with the executable
+    * `oclean`: deletes the object files
+    * `fclean`: deletes the Emacs temporary files, the executable, and the object files
+    * `re`: forces recompilation of all source files
 * variables: `CC`, `SRC`, `OBJ`, `NAME`, `RM`, `CFLAGS`
-	* `CC`: the compiler to be used
-	* `SRC`: the `.c` files
-	* `OBJ`: the `.o` files
-	* `NAME`: the name of the executable
-	* `RM`: the program to delete files
-	* CFLAGS: your favorite compiler flags: `-Wall -Werror -Wextra -pedantic`
+    * `CC`: the compiler to be used
+    * `SRC`: the `.c` files
+    * `OBJ`: the `.o` files
+    * `NAME`: the name of the executable
+    * `RM`: the program to delete files
+    * `CFLAGS`: your favorite compiler flags: `-Wall` `-Werror` `-Wextra` `-pedantic`
 * The `all` rule should recompile only the updated source files
 * The `clean`, `oclean`, `fclean`, `re` rules should never fail
-
 * You are not allowed to have a list of all the `.o` files
+
+**Solution:** [4-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/4-Makefile)
+
 ```
-julien@ubuntu:~/0x1C. Makefiles$ make all -f 4-Makefile
-gcc -Wall -Werror -Wextra -pedantic   -c -o main.o main.c
-gcc -Wall -Werror -Wextra -pedantic   -c -o holberton.o holberton.c
-gcc main.o holberton.o -o holberton
-julien@ubuntu:~/0x1C. Makefiles$ 
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles# make all -f 4-Makefile
+gcc main.c school.c -o school
+root@baf6d2c088fb:~/holbertonschool-low_level_programming/0x1C-makefiles#
 ```
 
-### [5. Island Perimeter](./5-island_perimeter.py)
-__Technical interview preparation:__
+## Island Perimeter
 
-* You are not allowed to google anything
-* Whiteboard first
-Create a function `def island_perimeter(grid):` that returns the perimeter of the island described in `grid`:
+Technical interview preparation:
 
-	* `grid` is a list of list of integers:
-	* 0 represents a water zone
-	* 1 represents a land zone
-	* One cell is a square with side length 1
-	* Grid cells are connected horizontally/vertically (not diagonally).
-	* Grid is rectangular, width and height don’t exceed 100
-* Grid is completely surrounded by water, and there is one island (or nothing).
-* The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island).
+    * You are not allowed to google anything
+    * Whiteboard first
+
+Create a function def `island_perimeter(grid):` that returns the perimeter of the island described in `grid`:
+
+    * `grid` is a list of list of integers:
+        * 0 represents a water zone
+        * 1 represents a land zone
+        * One cell is a square with side length 1
+        * Grid cells are connected horizontally/vertically (not diagonally).
+        * Grid is rectangular, width and height don’t exceed 100
+    * Grid is completely surrounded by water, and there is one island (or nothing).
+    * The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island).
+
 Requirements:
 
-* First line contains `#!/usr/bin/python3`
-* You are not allowed to import any module
-* Module and function must be documented
-```
-guillaume@ubuntu:~/0x1C$ cat 5-main.py
-#!/usr/bin/python3
-"""
-5-main
-"""
-island_perimeter = __import__('5-island_perimeter').island_perimeter
+    * First line contains `#!/usr/bin/python3`
+    * You are not allowed to import any module
+    * Module and function must be documented
 
-if __name__ == "__main__":
-    grid = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0]
-    ]
-    print(island_perimeter(grid))
+**Solution:** [5-island_perimeter.py](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/5-island_perimeter.py)
 
-guillaume@ubuntu:~/0x1C$ 
-guillaume@ubuntu:~/0x1C$ ./5-main.py
-12
-guillaume@ubuntu:~/0x1C$ 
-```
+## make -f 100-Makefile
 
-### [6. make -f 100-Makefile](./100-Makefile)
 Requirements:
 
 * name of the executable: `holberton`
 * rules: `all`, `clean`, `fclean`, `oclean`, `re`
-	* `all`: builds your executable
-	* `clean`: deletes all Emacs and Vim temporary files along with the executable
-	* `oclean`: deletes the object files
-	* `fclean`: deletes the Emacs temporary files, the executable, and the object files
-	* `re`: forces recompilation of all source files
+    * `all`: builds your executable
+    * `clean`: deletes all Emacs and Vim temporary files along with the executable
+    * `oclean`: deletes the object files
+    * `fclean`: deletes the Emacs temporary files, the executable, and the object files
+    * `re`: forces recompilation of all source files
 * variables: `CC`, `SRC`, `OBJ`, `NAME`, `RM`, `CFLAGS`
-	* `CC`: the compiler to be used
-	* `SRC`: the .c files
-	* `OBJ`: the .o files
-	* `NAME`: the name of the executable
-	* `RM`: the program to delete files
-	* `CFLAGS`: your favorite compiler flags: `-Wall -Werror -Wextra -pedantic`
+    * `CC`: the compiler to be used
+    * `SRC`: the `.c` files
+    * `OBJ`: the `.o` files
+    * `NAME`: the name of the executable
+    * `RM`: the program to delete files
+    * `CFLAGS`: your favorite compiler flags: `-Wall` `-Werror` `-Wextra` `-pedantic`
 * The `all` rule should recompile only the updated source files
 * The `clean`, `oclean`, `fclean`, `re` rules should never fail
 * You are not allowed to have a list of all the `.o` files
-* You have to use $(RM) for the cleaning up rules, but you are not allowed to set the `RM` variable
+* You have to use `$(RM)` for the cleaning up rules, but you are not allowed to set the `RM` variable
 * You are not allowed to use the string `$(CC)` more than once in your Makefile
 * You are only allowed to use the string `$(RM)` twice in your Makefile
 * You are not allowed to use the string `$(CFLAGS)` (but the compiler should still use the flags you set in this variable)
 * You are not allowed to have an `$(OBJ)` rule
-* You are not allowed to use the `%.o: %.c` rule
+* You are not allowed to use the `%.o`: `%.c` rule
 * Your Makefile should work even if there is a file in the folder that has the same name as one of your rule
 * Your Makefile should not compile if the header file `m.h` is missing
 
----
-
-## Author
-* **Tim Assavarat** - [tassavarat](https://github.com/tassavarat)
+**Solution:** [100-Makefile](https://github.com/Ouyei/holbertonschool-low_level_programming/blob/main/0x1C-makefiles/100-Makefile)
